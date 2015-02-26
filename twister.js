@@ -131,7 +131,7 @@ ig.module(
         },
         /**
          *This method returns a pseudorandom float number between min and max, including both
-         *@method .getIntRange
+         *@method .getFloatRange
          *@param {Number} min
          *@param {Number} max
          *@return {Number}

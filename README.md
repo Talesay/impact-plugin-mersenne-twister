@@ -61,7 +61,7 @@ This method returns a pseudorandom integer number between min and max, including
 
 * **Number** 
 
-## .getIntRange(min, max)
+## .getFloatRange(min, max)
 
 This method returns a pseudorandom float number between min and max, including both
 
