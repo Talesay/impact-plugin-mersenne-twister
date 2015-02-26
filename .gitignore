@@ -1,1 +1,13 @@
+# GitEye project file
 /.project
+
+# Os & Process detritus
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.dropbox
+
+# Brackets settings
+.brackets.json

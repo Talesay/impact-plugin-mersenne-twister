@@ -29,7 +29,7 @@ ig.module(
      * ```javascript
      * var prng = new ig.MersenneTwister(seed);
      * ```
-     * __seed:__ An Integer to be used as the initial seed for the pseudorandom number generator, if absent Date.now() will be used
+     * __seed:__ An Integer to be used as the initial seed for the pseudorandom number generator, if undefined Date.now() will be used
      * ## Usage
      * ```javascript
      * var prng = new ig.MersenneTwister(1);
@@ -45,6 +45,12 @@ ig.module(
      * ```
      */
     'use strict';
+    ig.MersenneTwisterError = function (message) {
+        var m = typeof message !== 'undefined' ? message : "Undefined Error";
+        this.name = "MersenneTwisterError";
+        this.message = m;
+    };
+    ig.MersenneTwisterError.prototype = Error.prototype;
     ig.MersenneTwister = ig.Class.extend({
         mt: [],
         last32: 18122433253 & 0xFFFFFFFF,
@@ -52,6 +58,9 @@ ig.module(
         index: 0,
         init: function (seed) {
             var s = typeof seed !== 'undefined' ? seed : Date.now();
+            if (typeof s !== 'number' && Math.floor(s) !== s) {
+                throw new ig.MersenneTwisterError(s + " is not a number.");
+            }
             this.mt = [s];
             this.generate();
         },
@@ -106,6 +115,18 @@ ig.module(
          *@return {Number}
          */
         getIntRange: function (min, max) {
+            var a = arguments,
+                parameter;
+            for (parameter in a) {
+                if (a.hasOwnProperty(parameter)) {
+                    if (typeof a[parameter] !== 'number' && Math.floor(a[parameter]) !== a[parameter]) {
+                        throw new ig.MersenneTwisterError(a[parameter] + " is not an integer.");
+                    }
+                }
+            }
+            if (max < min) {
+                throw new ig.MersenneTwisterError("Value set for max is less than min.");
+            }
             return Math.floor(this.get() * (max - min + 1)) + min;
         },
         /**
@@ -116,6 +137,18 @@ ig.module(
          *@return {Number}
          */
         getFloatRange: function (min, max) {
+            var a = arguments,
+                parameter;
+            for (parameter in a) {
+                if (a.hasOwnProperty(parameter)) {
+                    if (typeof a[parameter] !== 'number') {
+                        throw new ig.MersenneTwisterError(a[parameter] + " is not a number.");
+                    }
+                }
+            }
+            if (max < min) {
+                throw new ig.MersenneTwisterError("Value set for max is less than min.");
+            }
             return (this.get() * (max - min)) + min;
         }
     });

@@ -25,7 +25,7 @@ Then require this module:
 ```javascript
 var prng = new ig.MersenneTwister(seed);
 ```
-__seed:__ An Integer to be used as the initial seed for the pseudorandom number generator, if absent Date.now() will be used
+__seed:__ An Integer to be used as the initial seed for the pseudorandom number generator, if undefined Date.now() will be used
 ## Usage
 ```javascript
 var prng = new ig.MersenneTwister(1);
