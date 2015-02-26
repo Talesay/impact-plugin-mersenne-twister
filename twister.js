@@ -29,7 +29,7 @@ ig.module(
      * ```javascript
      * var prng = new ig.MersenneTwister(seed);
      * ```
-     * __seed:__ A Integer to be used as the initial seed for the pseudorandom number generator, if absent Date.now() will be used
+     * __seed:__ An Integer to be used as the initial seed for the pseudorandom number generator, if absent Date.now() will be used
      * ## Usage
      * ```javascript
      * var prng = new ig.MersenneTwister(1);
@@ -37,11 +37,11 @@ ig.module(
      * 0.057725428480649384
      * pnrg.get();
      * 0.8143797201814594
-     * var prng = new ig.MersenneTwister(0.35);
+     * var prng = new ig.MersenneTwister(42);
      * pnrg.getFloatRange(3,7);
-     * 6.2455029781237705
-     * pnrg.getIntRange(-10, 5);
-     * 0.057725428480649384
+     * 4.8493376279088585
+     * pnrg.getIntRange(-7, 5);
+     * -2
      * ```
      */
     'use strict';
