@@ -37,6 +37,7 @@ ig.module(
      * 0.057725428480649384
      * pnrg.get();
      * 0.8143797201814594
+     *
      * var prng = new ig.MersenneTwister(42);
      * pnrg.getFloatRange(3,7);
      * 4.8493376279088585
